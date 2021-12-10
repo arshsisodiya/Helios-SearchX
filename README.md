@@ -8,16 +8,23 @@
 ## This Is A Telegram Bot Written In Python For Searching Files In Our Beloved Google Drive.It Can Search In Multiple Shared Drive/Team Drives.
 </p>
 
-##Fork of iamLiquidX SearchX Bot with many new features
+####Fork of iamLiquidX SearchX Bot with many new features
 
-##Features added by me
+###Features added by me
 - Ability to choose b/w Recursive Search and normal Search
 - Ability to choose b/w Files and folder or both while searching
 - Define Authorized Chat in Config.env
 - Define token.pickle url in config.env
 - Auto generating Telegraph Token, no need to generate manually
+- Ability to change Telegraph ui element such as Title, Author Name and Author URL directly from config.env
+- Ability to use MULTI Search URL for drive_folder
+- Define Multi search url in config.env
+- Ability to deploy on Heroku using Github Actions
+- And many more minor fixes and improvements
 
-Here Are Some Things To Get You Started.👇
+<center> <b> Hail Helios </b> </center>
+
+###Here Are Some Things To Get You Started.👇
 
 ### 👉[How To Deploy]()
 - Fork this repo
