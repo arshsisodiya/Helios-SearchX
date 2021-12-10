@@ -42,7 +42,7 @@ def select_type(update, context):
         query.answer()
         list_method = data[3]
         item_type = data[2]
-        editMessage(f"<b>Searching for <i>{key} </i> please wait.... </b>", msg)
+        editMessage(f"<b>Searching for <i>{key} </i>please wait.... </b>", msg)
         list_drive(key, msg, list_method, item_type)
     else:
         query.answer()

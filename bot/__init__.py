@@ -95,23 +95,24 @@ if os.path.exists('drive_folder'):
 try:
     TITLE_NAME = getConfig('TITLE_NAME')
     if len(TITLE_NAME) == 0:
-        TITLE_NAME = None
+        TITLE_NAME = 'Helios-Mirror-Search'
 except KeyError:
     TITLE_NAME = 'Helios-Mirror-Search'
 
 try:
     AUTHOR_NAME = getConfig('AUTHOR_NAME')
     if len(AUTHOR_NAME) == 0:
-        AUTHOR_NAME = None
+        AUTHOR_NAME = 'Helios-Mirror-Bot'
 except KeyError:
     AUTHOR_NAME = 'Helios-Mirror-Bot'
 
 try:
     AUTHOR_URL = getConfig('AUTHOR_URL')
     if len(AUTHOR_URL) == 0:
-        AUTHOR_URL = None
+        AUTHOR_URL = 'https://t.me/heliosmirror'
 except KeyError:
     AUTHOR_URL = 'https://t.me/heliosmirror'
+
 
 updater = tg.Updater(token=BOT_TOKEN,use_context=True)
 bot = updater.bot

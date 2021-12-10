@@ -20,7 +20,6 @@ LOGGER = logging.getLogger(__name__)
 logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-TELEGRAPHLIMIT = 90
 
 class GoogleDriveHelper:
     def __init__(self, name=None, listener=None):
@@ -62,6 +61,7 @@ class GoogleDriveHelper:
             with open(self.__G_DRIVE_TOKEN_FILE, 'wb') as token:
                 pickle.dump(credentials, token)
         return build('drive', 'v3', credentials=credentials, cache_discovery=False)
+
 
     def get_recursive_list(self, file, rootid = "root"):
         rtnlist = []
@@ -287,7 +287,7 @@ class GoogleDriveHelper:
         contents_count = 0
         Title = False
         if len(DRIVES_IDS) > 1:
-            token_service = self.alt_authorize()
+            token_service = self.authorize()
             if token_service is not None:
                 self.__service = token_service
         for index, parent_id in enumerate(DRIVES_IDS):
@@ -301,7 +301,7 @@ class GoogleDriveHelper:
             elif not response["files"]:
                 continue
             if not Title:
-                msg += f'<h4>Search Result For {fileName}</h4><br><br>'
+                msg += f'<h4>Search Result For {fileName}</h4><br><br><b><a href="https://github.com/arshsisodiya/SearchX"> Bot Repo </a></b> <br>'
                 Title = True
             if len(DRIVES_NAMES) > 1 and DRIVES_NAMES[index] is not None:
                 msg += f"╾────────────╼<br><b>{DRIVES_NAMES[index]}</b><br>╾────────────╼<br>"
@@ -369,6 +369,6 @@ class GoogleDriveHelper:
 
         msg = f"<b>Found {contents_count} result for <i>{fileName}</i></b>"
         buttons = button_builder.ButtonMaker()
-        buttons.buildbutton("🔎 VIEW", f"https://telegra.ph/{self.path[0]}")
+        buttons.buildbutton("🔎 Click Here for Result", f"https://telegra.ph/{self.path[0]}")
 
         return msg, InlineKeyboardMarkup(buttons.build_menu(1))

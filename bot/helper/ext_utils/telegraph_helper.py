@@ -55,4 +55,4 @@ class TelegraphHelper:
 			return self.edit_page(path, title, content)
 
 
-telegraph=TelegraphHelper('Helios-Search', 'https://github.com/arshsisodiya')
+telegraph=TelegraphHelper(f'{AUTHOR_NAME}', f'{AUTHOR_URL}')
