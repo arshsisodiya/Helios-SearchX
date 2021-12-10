@@ -86,6 +86,21 @@ except KeyError:
 DRIVES_NAMES = []
 DRIVES_IDS = []
 INDEX_URLS = []
+try:
+    MULTI_SEARCH_URL = getConfig('MULTI_SEARCH_URL')
+    if len(MULTI_SEARCH_URL) == 0:
+        MULTI_SEARCH_URL = None
+    else:
+        res = requests.get(MULTI_SEARCH_URL)
+        if res.status_code == 200:
+            with open('drive_folder', 'wb+') as f:
+                f.write(res.content)
+                f.close()
+        else:
+            logging.error(f"Failed to download drive_folder {res.status_code}")
+            raise KeyError
+except KeyError:
+    pass
 
 if os.path.exists('drive_folder'):
     with open('drive_folder', 'r+') as f:
@@ -101,6 +116,7 @@ if os.path.exists('drive_folder'):
                 INDEX_URLS.append(temp[2])
             except IndexError as e:
                 INDEX_URLS.append(None)
+
 
 try:
     TITLE_NAME = getConfig('TITLE_NAME')
