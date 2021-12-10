@@ -12,7 +12,7 @@ from googleapiclient.errors import HttpError
 
 from telegram import InlineKeyboardMarkup
 from bot.helper.telegram_helper import button_builder
-from bot import  DRIVES_NAMES, DRIVES_IDS, INDEX_URLS, VIEW_LINK
+from bot import  DRIVES_NAMES, DRIVES_IDS, INDEX_URLS, VIEW_LINK,  TITLE_NAME
 from bot.helper.ext_utils.telegraph_helper import telegraph
 from bot.helper.ext_utils.bot_utils import get_readable_file_size
 
@@ -358,7 +358,7 @@ class GoogleDriveHelper:
         for content in self.telegraph_content:
             self.path.append(
                 telegraph.create_page(
-                    title='Helios-Search',
+                    title=f'{TITLE_NAME}',
                     content=content
                 )["path"]
             )

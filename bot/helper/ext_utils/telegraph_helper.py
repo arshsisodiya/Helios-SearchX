@@ -6,7 +6,7 @@ import logging
 from telegraph import Telegraph
 from telegraph.exceptions import RetryAfterError
 
-from bot import LOGGER
+from bot import LOGGER, AUTHOR_NAME, AUTHOR_URL, TITLE_NAME
 
 
 class TelegraphHelper:
@@ -30,9 +30,9 @@ class TelegraphHelper:
 	def create_page(self, title, content):
 		try:
 			return self.telegraph.create_page(
-				title = title,
-				author_name=self.author_name,
-				author_url=self.author_url,
+				title = f'{TITLE_NAME}',
+				author_name=f'{AUTHOR_NAME}',
+				author_url=f'{AUTHOR_URL}',
 				html_content=content
 			)
 		except RetryAfterError as st:
@@ -43,10 +43,10 @@ class TelegraphHelper:
 	def edit_page(self, path, title, content):
 		try:
 			return self.telegraph.edit_page(
-				path = path,
-				title = title,
-				author_name=self.author_name,
-				author_url=self.author_url,
+				path=path,
+				title=f'{TITLE_NAME}',
+				author_name=f'{AUTHOR_NAME}',
+				author_url=f'{AUTHOR_URL}',
 				html_content=content
 			)
 		except RetryAfterError as st:
