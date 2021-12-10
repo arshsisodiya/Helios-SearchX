@@ -11,3 +11,4 @@ authorized_chats.txt
 log.txt
 accounts/*
 drive_folder
+*__pycache__

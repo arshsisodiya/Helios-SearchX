@@ -1,8 +1,8 @@
 import logging
 import os
 import time
-
 import telegram.ext as tg
+import requests
 from dotenv import load_dotenv
 
 from telegraph import Telegraph
@@ -33,45 +33,64 @@ except KeyError:
 BOT_TOKEN = None
 
 AUTHORIZED_CHATS = set()
-
-AUTHORIZED_CHATS = set()
 if os.path.exists('authorized_chats.txt'):
     with open('authorized_chats.txt', 'r+') as f:
         lines = f.readlines()
         for line in lines:
             AUTHORIZED_CHATS.add(int(line.split()[0]))
+try:
+    achats = getConfig('AUTHORIZED_CHATS')
+    achats = achats.split(" ")
+    for chats in achats:
+        AUTHORIZED_CHATS.add(int(chats))
+except:
+    pass
+
+try:
+    VIEW_LINK = getConfig('VIEW_LINK')
+    VIEW_LINK = VIEW_LINK.lower() == 'true'
+except KeyError:
+    VIEW_LINK = False
 
 try:
     BOT_TOKEN = getConfig('BOT_TOKEN')
     OWNER_ID = int(getConfig('OWNER_ID'))
-    telegraph_token = getConfig('TELEGRAPH_TOKEN')
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
-
-DRIVE_NAME = []
-DRIVE_ID = []
-INDEX_URL = []
+try:
+    TOKEN_PICKLE_URL = getConfig('TOKEN_PICKLE_URL')
+    if len(TOKEN_PICKLE_URL) == 0:
+        TOKEN_PICKLE_URL = None
+    else:
+        res = requests.get(TOKEN_PICKLE_URL)
+        if res.status_code == 200:
+            with open('token.pickle', 'wb+') as f:
+                f.write(res.content)
+                f.close()
+        else:
+            logging.error(f"Failed to download token.pickle {res.status_code}")
+            raise KeyError
+except KeyError:
+    pass
+DRIVES_NAMES = []
+DRIVES_IDS = []
+INDEX_URLS = []
 
 if os.path.exists('drive_folder'):
     with open('drive_folder', 'r+') as f:
         lines = f.readlines()
         for line in lines:
-            temp = line.strip().split()
-            DRIVE_NAME.append(temp[0].replace("_", " "))
-            DRIVE_ID.append(temp[1])
             try:
-                INDEX_URL.append(temp[2])
+                temp = line.strip().split()
+                DRIVES_IDS.append(temp[1])
+                DRIVES_NAMES.append(temp[0].replace("_", " "))
+            except:
+                pass
+            try:
+                INDEX_URLS.append(temp[2])
             except IndexError as e:
-                INDEX_URL.append(None)
-
-if DRIVE_ID :
-    pass
-else :
-    LOGGER.error("The README.md file there to be read! Exiting now!")
-    exit(1)
-
-telegra_ph = Telegraph(access_token=telegraph_token)
+                INDEX_URLS.append(None)
 
 updater = tg.Updater(token=BOT_TOKEN,use_context=True)
 bot = updater.bot
