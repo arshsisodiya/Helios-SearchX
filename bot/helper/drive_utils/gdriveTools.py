@@ -301,7 +301,7 @@ class GoogleDriveHelper:
             elif not response["files"]:
                 continue
             if not Title:
-                msg += f'<h4>Search Result For {fileName}</h4><br><br><b><a href="https://github.com/arshsisodiya/SearchX"> Bot Repo </a></b> <br>'
+                msg += f'<h4>Search Result For {fileName}</h4><br><br><b><a href="https://github.com/arshsisodiya/Helios-SearchX"> Bot Repo </a></b> <br>'
                 Title = True
             if len(DRIVES_NAMES) > 1 and DRIVES_NAMES[index] is not None:
                 msg += f"╾────────────╼<br><b>{DRIVES_NAMES[index]}</b><br>╾────────────╼<br>"
