@@ -8,9 +8,9 @@
 ## This Is A Telegram Bot Written In Python For Searching Files In Our Beloved Google Drive.It Can Search In Multiple Shared Drive/Team Drives.
 </p>
 
-####Fork of iamLiquidX SearchX Bot with many new features
+#### Fork of iamLiquidX SearchX Bot with many new features
 
-###Features added by me
+## Features added by me aka Arsh Sisodiya
 - Ability to choose b/w Recursive Search and normal Search
 - Ability to choose b/w Files and folder or both while searching
 - Define Authorized Chat in Config.env
@@ -22,11 +22,11 @@
 - Ability to deploy on Heroku using Github Actions
 - And many more minor fixes and improvements
 
-<center> <b> Hail Helios </b> </center>
+<center> <b> Hail Helios </b> </center> <br>
 
-###Here Are Some Things To Get You Started.👇
+### Here Are Some Things To Get You Started.👇
 
-### 👉[How To Deploy]()
+### 👉How To Deploy
 - Fork this repo
 - Fill configs in config.env
 - Fill drive_folder accordingly or you can run driveid.py
@@ -55,7 +55,7 @@ untill you can use your mind and deploy on heroku using
 - Select Workflow name "Manually Deploy to Heroku" and clik on "Run Workflow"
 - You check actions log and heroku log if you face any error
 
-## Drive_Folder guide
+## 👉Drive_Folder guide
 ```
 - Drive_folder format
 - Drive Name, Drive ID, Index Url Here, Give Space Between Them.
@@ -64,7 +64,7 @@ Second-Drive 0ABoigoqjshsk9PVA https://dl.noformat.workers.dev/0:
 - Seprate each drive with line
 ```
 
-## MULTI_SEARCH_URL Guide
+## 👉MULTI_SEARCH_URL Guide
 ```
 MULTI_SEARCH_URL
 **Example:**<br>
